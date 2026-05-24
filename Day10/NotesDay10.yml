@@ -1,0 +1,239 @@
+📑 **Agenda for Week 5 Day 2: OOPs in TypeScript
+
+🎯 [Focus: Mastering Object-Oriented Programming Concepts in TypeScript]
+
+📆 [24th May, 2026 Sunday]
+
+🕝 Session Highlights
+
+⿡ Recap
+Quick review of previous learnings.
+
+1. Class & Objects
+
+Understanding the basics of classes and objects in TypeScript.
+Examples: Creating and using classes and objects.
+
+2. Constructors
+
+Role of constructors in initializing objects.
+Examples: Using parameterized and default constructors.
+
+Classroom Activity on class, porperties, methods and constructor.
+
+3. Access Modifiers and Single Inheritance
+
+Understanding public, private, and protected access modifiers and Single Inheritance.
+Examples: Controlling access to class properties and methods.
+
+4. MCP Server Integration
+Integrating Playwright tests with MCP (Model Context Protocol) server for enhanced test management and reporting.
+Examples: Uploading test results, managing test cases, and generating reports.
+
+
+---
+
+Notes 
+
+Class and Object:
+
+
+Real life example of Class and Object, Properties and Methods:
+
+###  What is a *Class*?
+
+A *class* is like a *blueprint* or *template* for creating something.
+
+Example with application login :
+-----------------------------------
+
+property :
+---------
+Represents the information or data related to a particular page or object
+(e.g., username, password, URL).
+
+method :
+-------- 
+Represents the actions or operations performed on that page or object
+(e.g., fill a field, click a button, submit a form).
+
+******************************************************************************************
+
+Sample Program :
+--------------
+
+
+
+****************************************************************************************
+Constructor:
+
+Definition
+A constructor in TypeScript is a method named constructor() that runs once at the time of object creation and sets up the initial state of the object.
+Or a Special method to initialize the object
+
+*******************************************************************************************
+
+
+class LoginPage{
+
+//Properties: (Specific class related data)
+browserName = "Chrome"
+url = "https://leaftaps.com/opentaps/control/main"
+username = "democsr2"
+password = "crmsfa"
+
+//Method : (Specific class related actions )
+launch(){
+console.log("Launch the browser Chrome")
+}
+
+loadur(){
+console.log("Load the url")
+}
+
+fill(){ // Method block--> block of code to perform an action
+
+//Actionables
+//fill method
+//use the properties "username" and "password" to perform the action to fill the login form
+
+console.log("Fill username and password in the text box")
+
+
+}
+
+click(){
+//Actionables
+//click method
+
+console.log("Click the submit button")
+
+}
+}
+
+
+const lp = new LoginPage() // ✔️ Memory is allocated //syntax to create an object(reference/ instance/copy) for a class to call the methods(actionable blocks) inside the class 
+
+lp.launch()
+lp.loadurl()
+lp.fill()
+lp.click()
+
+
+---
+
+class WelcomePage{
+click(){
+//Actionables
+click method
+}
+}
+
+
+//Difference between function block and a method block :
+------------------------------------------------------
+
+=> A function is independent.
+
+=> A method belongs to an object/class.
+
+---
+
+A function is like opening independent tea shops without branding.
+
+A method is like opening a branded cafe chain where everything related stays together — ingredients, process, billing, staff, standards.
+Methods make applications more organized, reusable, readable, and scalable.
+
+---
+
+Function :
+---
+Imagine opening small tea/coffee shops independently in different places.
+
+No common branding
+No shared standards
+Each shop works independently
+Sugar, coffee powder, setup may vary everywhere
+
+This is like a function.
+
+Independent behavior.
+
+makeCoffee();
+payBill();
+takeOrder();
+
+All are separate.
+
+------------------------
+Method
+----
+
+Now imagine opening cafes under one brand like Cafe Coffee Day CCD.
+
+Everything is connected to the brand:
+
+Same coffee powder
+Same logo
+Same process
+Same menu
+Easier to scale
+More organized
+
+This is like a method inside a class/object.
+
+cafe.makeCoffee();
+cafe.takeOrder();
+cafe.payBill();
+
+Now all actions belong to the cafe.
+
+“properties like coffee powder, sugar are branded and related”
+
+This maps perfectly to:
+
+class CafeCoffeeDay {
+
+   coffeePowder = "CCD-CoffeePowder";
+   sugar = "CCD-Sugar";
+
+   makeCCDCoffee() {
+      console.log(this.coffeePowder);
+   }
+}
+
+Here:
+
+Properties → coffee powder, sugar
+Methods → makeCoffee()
+
+Everything stays related inside one object.
+
+Scalability Point (Very Important)
+
+With methods/classes:
+
+✅ More organized
+✅ Better readability
+✅ Easier maintenance
+✅ Easier scaling for large applications
+
+That is exactly why frameworks like Playwright use methods:
+
+
+
+
+
+
+
+
+
+
+
+
+| Function        | Method                   |
+| --------------- | ------------------------ |
+| Independent     | Attached to object/class |
+| Called directly | Called using object      |
+| `add()`         | `page.click()`           |
+| General utility | Object behavior          |
