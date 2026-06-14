@@ -1,0 +1,309 @@
+Creating a feature branch in Git is straightforward.
+
+### 1. Check your current branch
+
+```bash
+git branch
+```
+
+You might see:
+
+```text
+* main
+```
+
+---
+
+### 2. Create and switch to a new feature branch
+
+```bash
+git checkout -b feature/playwright-github-actions
+```
+
+or using the newer Git command:
+
+```bash
+git switch -c feature/playwright-github-actions
+```
+
+This:
+
+* Creates the branch `feature/playwright-github-actions`
+* Switches you to it immediately
+
+---
+
+### 3. Verify you're on the new branch
+
+```bash
+git branch
+```
+
+Output:
+
+```text
+* feature/playwright-github-actions
+  main
+```
+
+---
+
+### 4. Make your changes and commit
+
+```bash
+git add .
+git commit -m "Added GitHub Actions workflow"
+```
+
+---
+
+### 5. Push the branch to GitHub
+
+Since this is the first push of the branch:
+
+```bash
+git push -u origin feature/playwright-github-actions
+```
+
+The `-u` sets the upstream branch, so future pushes can be done with:
+
+```bash
+git push
+```
+
+---
+
+### Typical Playwright workflow
+
+```bash
+git checkout main
+git pull origin main
+
+git checkout -b feature/api-automation
+
+# Make changes
+
+git add .
+git commit -m "Added API automation tests"
+
+git push -u origin feature/api-automation
+```
+
+---
+
+### Branch naming conventions used in companies
+
+```text
+feature/playwright-framework
+feature/api-automation
+feature/github-actions
+bugfix/login-test-failure
+hotfix/prod-issue
+release/v1.2.0
+```
+
+For your GitHub Actions practice project, I'd use:
+
+```bash
+git checkout -b feature/github-actions
+```
+
+or
+
+```bash
+git checkout -b feature/playwright-ci-cd
+```
+
+These are common industry-style branch names.
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+
+Once you've pushed your feature branch to GitHub, the next step is to create a **Pull Request (PR)**.
+
+## Typical Workflow
+
+```text
+main
+  │
+  ├── feature/github-actions
+          │
+          ├── Code Changes
+          ├── Commit
+          ├── Push
+          ▼
+      Pull Request
+          ▼
+      Code Review
+          ▼
+         Merge
+```
+
+## Step 1: Go to GitHub Repository
+
+Open your repository on GitHub.
+
+You will usually see a banner like:
+
+```text
+feature/github-actions had recent pushes
+Compare & Pull Request
+```
+
+Click **Compare & Pull Request**.
+
+If you don't see the banner:
+
+1. Click **Pull Requests**
+2. Click **New Pull Request**
+3. Select:
+
+```text
+Base Branch : main
+Compare Branch : feature/github-actions
+```
+
+---
+
+## Step 2: Fill PR Details
+
+### Title
+
+Use a meaningful title:
+
+```text
+Add GitHub Actions workflow for Playwright tests
+```
+
+or
+
+```text
+Implement Playwright CI pipeline using GitHub Actions
+```
+
+### Description
+
+A common template:
+
+```markdown
+## Summary
+Added GitHub Actions workflow for Playwright test execution.
+
+## Changes Made
+- Added workflow YAML file
+- Configured Playwright installation
+- Configured browser setup
+- Configured test execution
+
+## Validation
+- Workflow executed successfully
+- Tests passed
+
+## Screenshots
+Attached workflow execution screenshots
+```
+
+---
+
+## Step 3: Review Files Changed
+
+Before creating the PR:
+
+* Click **Files Changed**
+* Verify only intended files are included
+* Ensure no:
+
+  * node_modules
+  * .env files
+  * secrets
+  * unnecessary screenshots
+
+---
+
+## Step 4: Create Pull Request
+
+Click:
+
+```text
+Create Pull Request
+```
+
+---
+
+## Step 5: GitHub Actions Validation
+
+If GitHub Actions is configured:
+
+```text
+Checks running...
+```
+
+Wait until:
+
+```text
+✓ All checks have passed
+```
+
+In real projects, reviewers often won't approve a PR until CI passes.
+
+---
+
+## Step 6: Review Process (Company Workflow)
+
+Typically:
+
+```text
+Developer/SDET raises PR
+          ↓
+Reviewer reviews code
+          ↓
+Comments given
+          ↓
+Changes addressed
+          ↓
+PR approved
+          ↓
+Merge to main
+```
+
+Example comments:
+
+```text
+Use Page Object Model
+Remove hardcoded wait
+Improve locator strategy
+Add negative test scenario
+```
+
+---
+
+## Step 7: Merge
+
+If it's your own practice repository:
+
+Click:
+
+```text
+Merge Pull Request
+```
+
+then
+
+```text
+Confirm Merge
+```
+
+---
+
+## Interview Perspective
+
+If an interviewer asks:
+
+> "What is your Pull Request workflow?"
+
+You can answer:
+
+> "I create a feature branch from the main branch, implement the changes, commit and push the code, then raise a Pull Request. I provide a summary of changes, validate GitHub Actions or CI pipeline execution, address reviewer comments, obtain approvals, and finally merge the PR into the target branch."
+
+This is the standard workflow followed in most teams using GitHub, GitLab, or Azure DevOps.
